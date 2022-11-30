@@ -1,0 +1,8 @@
+[Service]
+ExecStart=/home/fpp/media/scripts/pushToListenCronScript.sh
+StandardOutput=null
+User=fpp
+Group=fpp
+
+[Unit]
+Description=Check Amp Timer Script

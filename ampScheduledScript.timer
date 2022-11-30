@@ -1,0 +1,10 @@
+[Unit]
+Description=Check Amp Timer Script
+
+[Timer]
+AccuracySec=200ms
+OnBootSec=2
+OnUnitActiveSec=2
+
+[Install]
+WantedBy=timers.target
