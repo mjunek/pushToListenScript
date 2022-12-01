@@ -53,30 +53,30 @@ if [ $CURRENT_TIME -gt $AMP_OFF_TIME ]; then
 
 elif  [ $CURRENT_TIME -gt $SECOND_REMINDER_TIME ]; then
 	echo Second reminder time exceeded
-        if  [ "x$CURRENT_ACTION" != "xSECOND" ]; then
-	        echo Disable all playing ESEQs
-	        curl -XGET http://$FPP_HOST/api/command/Effects\%20Stop
-	        echo
-	        echo Start playing second reminder sequence - $SECOND_REMINDER_ESEQ
-	        curl -XGET http://$FPP_HOST/api/command/Effect\%20Start/$SECOND_REMINDER_ESEQ/$PROP_START_CHANNEL/1
-	        echo
-                echo SECOND > $CURRENT_ACTION_FILE
+	if  [ "x$CURRENT_ACTION" != "xSECOND" ]; then
+		echo Disable all playing ESEQs
+		curl -XGET http://$FPP_HOST/api/command/Effects\%20Stop
+		echo
+		echo Start playing second reminder sequence - $SECOND_REMINDER_ESEQ
+		curl -XGET http://$FPP_HOST/api/command/Effect\%20Start/$SECOND_REMINDER_ESEQ/$PROP_START_CHANNEL/1
+		echo
+		echo SECOND > $CURRENT_ACTION_FILE
 	else
 		echo Already in second reminder state.
 	fi
 
 elif  [ $CURRENT_TIME -gt $FIRST_REMINDER_TIME ]; then
 	echo First Reminder time exceeded
-        if  [ "x$CURRENT_ACTION" != "xFIRST" ]; then
-	        echo Disable all playing ESEQs
-	        curl -XGET http://$FPP_HOST/api/command/Effects\%20Stop
-	        echo
-	        echo Start playing idle sequence - $FIRST_REMINDER_ESEQ
-	        curl -XGET http://$FPP_HOST/api/command/Effect\%20Start/$FIRST_REMINDER_ESEQ/$PROP_START_CHANNEL/1
-	        echo
-                echo FIRST > $CURRENT_ACTION_FILE
+	if  [ "x$CURRENT_ACTION" != "xFIRST" ]; then
+		echo Disable all playing ESEQs
+		curl -XGET http://$FPP_HOST/api/command/Effects\%20Stop
+		echo
+		echo Start playing idle sequence - $FIRST_REMINDER_ESEQ
+		curl -XGET http://$FPP_HOST/api/command/Effect\%20Start/$FIRST_REMINDER_ESEQ/$PROP_START_CHANNEL/1
+		echo
+		echo FIRST > $CURRENT_ACTION_FILE
 	else
-                echo Already in first reminder state.
+		echo Already in first reminder state.
 	fi
 
 else

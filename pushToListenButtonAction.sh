@@ -34,7 +34,6 @@ if [ $LAST_PRESSED -eq 0 ]; then
 	echo Sending MQTT power on command
 	echo -- mosquitto_pub -h $MQTT_HOST -m ON -t $TOPIC
 	mosquitto_pub -h $MQTT_HOST -m ON -t $TOPIC
-	echo INITIAL > $CURRENT_ACTION_FILE
 fi
 
 echo Disable all playing ESEQs
@@ -42,6 +41,7 @@ curl -XGET http://$FPP_HOST/api/command/Effects\%20Stop
 echo
 echo Writing current time to last press time
 echo $CURRENT_TIME > $STATUS_FILE
+echo INITIAL > $CURRENT_ACTION_FILE
 
 echo Done, exiting
 exit 0
